@@ -33,8 +33,8 @@ export function SideIllustration({ src, alt = 'Illustration' }: SideIllustration
 
       {/* Tablet: Oben rechts, kleiner */}
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="hidden md:block lg:hidden fixed right-4 top-24 pointer-events-none z-0"
         style={{
@@ -47,27 +47,27 @@ export function SideIllustration({ src, alt = 'Illustration' }: SideIllustration
           alt={alt}
           width={200}
           height={200}
-          className="w-full h-full object-contain opacity-70"
+          className="w-full h-full object-contain"
         />
       </motion.div>
 
-      {/* Mobile: Unten zentriert, klein und dezent */}
+      {/* Mobile: Unten zentriert, klein */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-        className="block md:hidden fixed bottom-20 left-1/2 -translate-x-1/2 pointer-events-none z-0"
-        style={{
-          width: '120px',
-          height: '120px',
-        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="block md:hidden fixed bottom-20 inset-x-0 flex justify-center pointer-events-none z-0"
       >
         <Image
           src={src}
           alt={alt}
           width={120}
           height={120}
-          className="w-full h-full object-contain opacity-50"
+          className="object-contain"
+          style={{
+            width: '120px',
+            height: '120px',
+          }}
         />
       </motion.div>
     </>
