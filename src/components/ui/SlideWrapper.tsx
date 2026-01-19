@@ -41,16 +41,16 @@ export function SlideWrapper({ slideNumber, section, children, className, darkMo
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#40E1AB]/5 to-transparent blur-3xl pointer-events-none" />
 
       {/* Header */}
-      <header className="relative z-10 flex items-center justify-between px-10 py-5">
-        <div className="flex items-center gap-6">
-          <Logo variant="govguru" width={150} height={32} />
+      <header className="relative z-10 flex items-center justify-between px-4 sm:px-6 lg:px-10 py-3 sm:py-4 lg:py-5">
+        <div className="flex items-center gap-2 sm:gap-4 lg:gap-6">
+          <Logo variant="govguru" width={150} height={32} className="w-[100px] sm:w-[120px] lg:w-[150px] h-auto" />
           {section && (
             <motion.span
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
               className={cn(
-                'text-sm font-medium px-4 py-1.5 rounded-full border',
+                'hidden sm:inline-block text-xs sm:text-sm font-medium px-2 sm:px-4 py-1 sm:py-1.5 rounded-full border',
                 darkMode
                   ? 'bg-[#42409F]/20 text-[#40E1AB] border-[#42409F]/30'
                   : 'bg-white/80 text-[#42409F] border-[#42409F]/10 shadow-sm'
@@ -60,7 +60,7 @@ export function SlideWrapper({ slideNumber, section, children, className, darkMo
             </motion.span>
           )}
         </div>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-2 sm:gap-3 lg:gap-5">
           <SlideIndicator current={nav.currentSlide} total={nav.totalSlides} />
           <SlideNavigation
             onPrev={nav.prevSlide}
@@ -83,23 +83,23 @@ export function SlideWrapper({ slideNumber, section, children, className, darkMo
         animate="animate"
         exit="exit"
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className={cn('relative z-10 flex-1 flex items-center justify-center px-10 py-8', className)}
+        className={cn('relative z-10 flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-10 py-4 sm:py-6 lg:py-8', className)}
       >
         {children}
       </motion.main>
 
       {/* Footer */}
       <footer className={cn(
-        'relative z-10 flex items-center justify-between px-10 py-4 text-xs',
+        'relative z-10 flex items-center justify-between px-4 sm:px-6 lg:px-10 py-2 sm:py-3 lg:py-4 text-xs',
         darkMode ? 'text-gray-500' : 'text-[#64748b]'
       )}>
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#40E1AB]" />
-          <span className="font-medium">govguru24.de</span>
+          <span className="font-medium text-[10px] sm:text-xs">govguru24.de</span>
         </div>
-        <div className="flex items-center gap-6">
-          <span className="opacity-60 hidden sm:inline">Pfeiltasten oder Leertaste für Navigation · F für Vollbild</span>
-          <Logo variant="egovc" width={70} height={18} className="opacity-50 hover:opacity-100 transition-opacity" />
+        <div className="flex items-center gap-3 sm:gap-6">
+          <span className="opacity-60 hidden lg:inline">Pfeiltasten oder Leertaste für Navigation · F für Vollbild</span>
+          <Logo variant="egovc" width={70} height={18} className="w-[50px] sm:w-[60px] lg:w-[70px] h-auto opacity-50 hover:opacity-100 transition-opacity" />
         </div>
       </footer>
     </div>

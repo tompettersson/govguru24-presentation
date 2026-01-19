@@ -58,7 +58,7 @@ function ColumnCard({ column, index }: { column: SlideColumn; index: number }) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 + index * 0.12 }}
-      className="glass-card  p-7 h-full hover-lift relative overflow-hidden"
+      className="glass-card p-4 sm:p-5 lg:p-7 h-full hover-lift relative overflow-hidden"
     >
       {/* Border Top */}
       <div
@@ -67,36 +67,36 @@ function ColumnCard({ column, index }: { column: SlideColumn; index: number }) {
       />
 
       {/* Icon + Title */}
-      <div className="flex items-center gap-4 mb-8">
+      <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
         {Icon && (
           <div
-            className="w-14 h-14 rounded-full flex items-center justify-center"
+            className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center"
             style={{
               background: colors.iconBg,
               boxShadow: '0 4px 12px rgba(66, 64, 159, 0.25)',
             }}
           >
-            <Icon className="w-7 h-7 text-white" />
+            <Icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
           </div>
         )}
-        <h3 className="text-xl font-semibold text-[#1a1a2e]">{column.title}</h3>
+        <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-[#1a1a2e]">{column.title}</h3>
       </div>
 
       {/* Items */}
-      <ul className="space-y-3">
+      <ul className="space-y-2 sm:space-y-3">
         {column.items.map((item, i) => (
           <motion.li
             key={i}
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 0.4 + index * 0.12 + i * 0.06 }}
-            className="flex items-start gap-3 text-[#1a1a2e]"
+            className="flex items-start gap-2 sm:gap-3 text-[#1a1a2e]"
           >
             <span
-              className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+              className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"
               style={{ background: colors.dotColor }}
             />
-            <span className="text-base leading-relaxed">{item}</span>
+            <span className="text-sm sm:text-base leading-relaxed">{item}</span>
           </motion.li>
         ))}
       </ul>
@@ -113,7 +113,7 @@ export function ThreeColumnSlide({ slide }: ThreeColumnSlideProps) {
   const isEGovCSlide = slide.id === 3;
 
   return (
-    <div className="w-full max-w-7xl mx-auto">
+    <div className="w-full max-w-7xl mx-auto px-2 sm:px-4">
       {/* Side Illustration (nur für nicht-EGovC Folien) */}
       {!isEGovCSlide && slide.illustration && (
         <SideIllustration src={slide.illustration} alt={slide.title} />
@@ -125,14 +125,14 @@ export function ThreeColumnSlide({ slide }: ThreeColumnSlideProps) {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center mb-6"
+          className="flex justify-center mb-4 sm:mb-6"
         >
           <Image
             src="/images/logo-egovc.svg"
             alt="EGovC"
             width={160}
             height={50}
-            className="h-auto"
+            className="h-auto w-[100px] sm:w-[130px] lg:w-[160px]"
           />
         </motion.div>
       )}
@@ -142,7 +142,7 @@ export function ThreeColumnSlide({ slide }: ThreeColumnSlideProps) {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="decorative-line mx-auto mb-6"
+        className="decorative-line mx-auto mb-4 sm:mb-6"
       />
 
       {/* Title */}
@@ -150,13 +150,13 @@ export function ThreeColumnSlide({ slide }: ThreeColumnSlideProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-10 text-center"
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a1a2e] mb-6 sm:mb-8 lg:mb-10 text-center"
       >
         {slide.title}
       </motion.h1>
 
       {/* Three Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
         {slide.columns.slice(0, 3).map((column, index) => (
           <ColumnCard key={index} column={column} index={index} />
         ))}

@@ -33,14 +33,15 @@ export function SlideNavigation({
   }, []);
 
   const buttonBase = cn(
-    'p-2.5 rounded-xl transition-all duration-200',
+    'p-3 sm:p-2.5 rounded-xl transition-all duration-200',
     'bg-white/80 backdrop-blur-sm border border-white/50',
     'shadow-sm hover:shadow-md',
-    'hover:bg-white active:scale-95'
+    'hover:bg-white active:scale-95',
+    'touch-manipulation' // Bessere Touch-Reaktion
   );
 
   return (
-    <div className={cn('flex items-center gap-2', className)}>
+    <div className={cn('flex items-center gap-1 sm:gap-2', className)}>
       <button
         onClick={onPrev}
         disabled={isFirstSlide}
@@ -50,7 +51,7 @@ export function SlideNavigation({
         )}
         aria-label="Vorherige Folie"
       >
-        <ChevronLeft className="w-5 h-5 text-[#1a1a2e]" />
+        <ChevronLeft className="w-5 h-5 sm:w-5 sm:h-5 text-[#1a1a2e]" />
       </button>
 
       <button
@@ -63,14 +64,14 @@ export function SlideNavigation({
         )}
         aria-label="Nächste Folie"
       >
-        <ChevronRight className={cn('w-5 h-5', !isLastSlide ? 'text-white' : 'text-[#1a1a2e]')} />
+        <ChevronRight className={cn('w-5 h-5 sm:w-5 sm:h-5', !isLastSlide ? 'text-white' : 'text-[#1a1a2e]')} />
       </button>
 
-      <div className="w-px h-6 bg-[#42409F]/20 mx-1" />
+      <div className="w-px h-5 sm:h-6 bg-[#42409F]/20 mx-0.5 sm:mx-1" />
 
       <button
         onClick={onFullscreen}
-        className={buttonBase}
+        className={cn(buttonBase, 'hidden sm:flex items-center justify-center')}
         aria-label={isFullscreen ? 'Vollbild beenden' : 'Vollbild'}
       >
         {isFullscreen ? (

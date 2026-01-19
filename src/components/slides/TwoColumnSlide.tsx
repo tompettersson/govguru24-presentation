@@ -41,7 +41,7 @@ function ColumnCard({ column, index }: { column: SlideColumn; index: number }) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
-      className="glass-card  p-8 hover-lift relative overflow-hidden"
+      className="glass-card p-4 sm:p-6 lg:p-8 hover-lift relative overflow-hidden"
     >
       {/* Border Top */}
       <div
@@ -50,36 +50,36 @@ function ColumnCard({ column, index }: { column: SlideColumn; index: number }) {
       />
 
       {/* Icon + Title */}
-      <div className="flex items-center gap-4 mb-8">
+      <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 lg:mb-8">
         {Icon && (
           <div
-            className="w-14 h-14 rounded-full flex items-center justify-center"
+            className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center"
             style={{
               background: '#42409F',
               boxShadow: '0 4px 12px rgba(66, 64, 159, 0.25)',
             }}
           >
-            <Icon className="w-7 h-7 text-white" />
+            <Icon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
           </div>
         )}
-        <h3 className="text-xl font-semibold text-[#1a1a2e]">{column.title}</h3>
+        <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-[#1a1a2e]">{column.title}</h3>
       </div>
 
       {/* Items */}
-      <ul className="space-y-4">
+      <ul className="space-y-2 sm:space-y-3 lg:space-y-4">
         {column.items.map((item, i) => (
           <motion.li
             key={i}
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 0.4 + index * 0.15 + i * 0.08 }}
-            className="flex items-start gap-3 text-[#1a1a2e]"
+            className="flex items-start gap-2 sm:gap-3 text-[#1a1a2e]"
           >
             <span
-              className="w-2 h-2 rounded-full mt-2.5 flex-shrink-0"
+              className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full mt-2 sm:mt-2.5 flex-shrink-0"
               style={{ background: '#42409F' }}
             />
-            <span className="text-lg leading-relaxed">{item}</span>
+            <span className="text-sm sm:text-base lg:text-lg leading-relaxed">{item}</span>
           </motion.li>
         ))}
       </ul>
@@ -102,7 +102,7 @@ export function TwoColumnSlide({ slide }: TwoColumnSlideProps) {
   const isEGovCSlide = slide.id === 2;
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <div className="w-full max-w-6xl mx-auto px-2 sm:px-4">
       {/* Side Illustration (nur für nicht-EGovC Folien) */}
       {!isEGovCSlide && slide.illustration && (
         <SideIllustration src={slide.illustration} alt={slide.title} />
@@ -114,14 +114,14 @@ export function TwoColumnSlide({ slide }: TwoColumnSlideProps) {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-4 sm:mb-6 lg:mb-8"
         >
           <Image
             src="/images/logo-egovc.svg"
             alt="EGovC"
             width={180}
             height={60}
-            className="h-auto"
+            className="h-auto w-[120px] sm:w-[150px] lg:w-[180px]"
           />
         </motion.div>
       )}
@@ -131,7 +131,7 @@ export function TwoColumnSlide({ slide }: TwoColumnSlideProps) {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="decorative-line mx-auto mb-6"
+        className="decorative-line mx-auto mb-4 sm:mb-6"
       />
 
       {/* Title */}
@@ -139,7 +139,7 @@ export function TwoColumnSlide({ slide }: TwoColumnSlideProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-10 text-center"
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a1a2e] mb-6 sm:mb-8 lg:mb-10 text-center"
       >
         {slide.title}
       </motion.h1>
@@ -150,7 +150,7 @@ export function TwoColumnSlide({ slide }: TwoColumnSlideProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex justify-center gap-12 mb-10"
+          className="flex flex-wrap justify-center gap-4 sm:gap-8 lg:gap-12 mb-6 sm:mb-8 lg:mb-10"
         >
           {illustrations.map((ill, i) => (
             <motion.div
@@ -160,24 +160,24 @@ export function TwoColumnSlide({ slide }: TwoColumnSlideProps) {
               transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
               className="flex flex-col items-center"
             >
-              <div className="w-52 h-52 flex items-center justify-center mb-3">
+              <div className="w-24 h-24 sm:w-36 sm:h-36 lg:w-52 lg:h-52 flex items-center justify-center mb-2 sm:mb-3">
                 <Image
                   src={ill.src}
                   alt={ill.alt}
                   width={200}
                   height={200}
-                  className="object-contain"
+                  className="object-contain w-full h-full"
                   style={{ mixBlendMode: 'multiply' }}
                 />
               </div>
-              <span className="text-sm font-semibold text-[#42409F]">{ill.label}</span>
+              <span className="text-xs sm:text-sm font-semibold text-[#42409F]">{ill.label}</span>
             </motion.div>
           ))}
         </motion.div>
       )}
 
       {/* Two Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
         {slide.columns.slice(0, 2).map((column, index) => (
           <ColumnCard key={index} column={column} index={index} />
         ))}

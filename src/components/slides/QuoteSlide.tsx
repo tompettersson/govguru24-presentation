@@ -10,7 +10,7 @@ interface QuoteSlideProps {
 
 export function QuoteSlide({ slide }: QuoteSlideProps) {
   return (
-    <div className="w-full max-w-4xl mx-auto text-center">
+    <div className="w-full max-w-4xl mx-auto text-center px-2 sm:px-4">
       {/* Side Illustration */}
       {slide.illustration && (
         <SideIllustration src={slide.illustration} alt={slide.title} />
@@ -21,7 +21,7 @@ export function QuoteSlide({ slide }: QuoteSlideProps) {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="decorative-line mx-auto mb-6"
+        className="decorative-line mx-auto mb-4 sm:mb-6"
       />
 
       {/* Title */}
@@ -29,7 +29,7 @@ export function QuoteSlide({ slide }: QuoteSlideProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mb-10"
+        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#1a1a2e] mb-6 sm:mb-8 lg:mb-10"
       >
         {slide.title}
       </motion.h1>
@@ -40,17 +40,17 @@ export function QuoteSlide({ slide }: QuoteSlideProps) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mb-14"
+          className="relative mb-8 sm:mb-10 lg:mb-14"
         >
           {/* Large Quote Mark */}
           <div
-            className="absolute -top-6 left-1/2 -translate-x-1/2 text-[120px] leading-none pointer-events-none select-none text-[#42409F]/10 font-bold"
+            className="absolute -top-4 sm:-top-6 left-1/2 -translate-x-1/2 text-[60px] sm:text-[80px] lg:text-[120px] leading-none pointer-events-none select-none text-[#42409F]/10 font-bold"
           >
             &ldquo;
           </div>
 
           <blockquote
-            className="relative z-10 text-2xl md:text-3xl font-semibold leading-relaxed px-4 md:px-12 text-[#42409F]"
+            className="relative z-10 text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold leading-relaxed px-2 sm:px-4 md:px-12 text-[#42409F]"
           >
             {slide.quote}
           </blockquote>
@@ -60,7 +60,7 @@ export function QuoteSlide({ slide }: QuoteSlideProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="block mt-6 text-lg text-[#64748b] not-italic font-medium"
+              className="block mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-[#64748b] not-italic font-medium"
             >
               — {slide.quoteAuthor}
             </motion.cite>
@@ -74,7 +74,7 @@ export function QuoteSlide({ slide }: QuoteSlideProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-wrap justify-center gap-4"
+          className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4"
         >
           {slide.content.map((item, index) => (
             <motion.div
@@ -82,15 +82,15 @@ export function QuoteSlide({ slide }: QuoteSlideProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-              className="glass-card  px-6 py-4 flex items-center gap-3 hover-lift"
+              className="glass-card px-4 sm:px-5 lg:px-6 py-3 sm:py-4 flex items-center gap-2 sm:gap-3 hover-lift"
             >
               <span
-                className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-white"
+                className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-full flex items-center justify-center font-bold text-white text-sm sm:text-base"
                 style={{ background: '#42409F' }}
               >
                 {index + 1}
               </span>
-              <span className="text-[#1a1a2e] font-medium text-lg">{item}</span>
+              <span className="text-[#1a1a2e] font-medium text-sm sm:text-base lg:text-lg">{item}</span>
             </motion.div>
           ))}
         </motion.div>
