@@ -1,26 +1,228 @@
+/* Poppins Font - verschiedene Stärken */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Hauptfarben - kein Lila, kein Verlauf */
+  --color-primary: #42409F;  /* Unser Blau */
+  --color-accent: #F72585;   /* Pink Akzent */
+  --color-success: #40E1AB;  /* Mint für Erfolg */
+  --color-dark: #1a1a2e;     /* Dunkler Text */
+
+  /* Backgrounds */
+  --background: #FAFBFC;
+  --background-dark: #121212;
+  --background-card: #ffffff;
+
+  /* Text */
+  --foreground: #1a1a2e;
+  --text-muted: #64748b;
+  --text-light: #ffffff;
+
+  /* Shadows - sichtbar und klar */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Poppins", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base Styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+/* Typography Smoothing */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Geometric Pattern Background */
+.bg-pattern {
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(66, 64, 159, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(64, 225, 171, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(247, 37, 133, 0.02) 0%, transparent 70%);
+}
+
+/* Subtle Grid Pattern */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(66, 64, 159, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(66, 64, 159, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-card);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.glass-card-dark {
+  background: rgba(15, 15, 18, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Farbige Text-Klassen - solide Farben, keine Verläufe */
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+/* Hintergrund-Farben */
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.bg-success {
+  background-color: var(--color-success);
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Staggered Animation */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Quote Styling */
+.quote-mark {
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(66, 64, 159, 0.12);
+  position: absolute;
+  top: -0.5rem;
+  left: -0.5rem;
+}
+
+/* Progress Bar Glow */
+.progress-glow {
+  box-shadow: 0 0 10px rgba(66, 64, 159, 0.4), 0 0 20px rgba(66, 64, 159, 0.2);
+}
+
+/* Fullscreen Mode */
+:fullscreen {
+  background: var(--background);
+}
+
+/* Selection */
+::selection {
+  background: rgba(66, 64, 159, 0.2);
+  color: var(--color-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(66, 64, 159, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(66, 64, 159, 0.4);
+}
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Number Badge */
+.number-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Decorative Elements */
+.decorative-line {
+  width: 60px;
+  height: 4px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.decorative-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent-alt);
 }
