@@ -83,7 +83,7 @@ export function SlideWrapper({ slideNumber, section, children, className, darkMo
         animate="animate"
         exit="exit"
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className={cn('relative z-10 flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-10 py-4 sm:py-6 lg:py-8', className)}
+        className={cn('relative z-10 flex-1 flex items-center justify-center px-4 sm:px-6 lg:pl-24 lg:pr-10 xl:pl-20 xl:pr-10 2xl:pl-16 2xl:pr-10 py-4 sm:py-6 lg:py-8', className)}
       >
         {children}
       </motion.main>
