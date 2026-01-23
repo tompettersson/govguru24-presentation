@@ -16,23 +16,60 @@ export function SideIllustration({ src, alt = 'Illustration' }: SideIllustration
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="hidden 2xl:block fixed left-8 top-1/2 -translate-y-1/2 pointer-events-none z-0"
+        className="hidden 2xl:block fixed left-4 top-1/2 -translate-y-1/2 pointer-events-none z-0"
         style={{
-          width: '380px',
-          height: '380px',
+          width: '320px',
+          height: '320px',
         }}
       >
         <Image
           src={src}
           alt={alt}
-          width={380}
-          height={380}
+          width={320}
+          height={320}
           className="w-full h-full object-contain"
         />
       </motion.div>
 
-      {/* Desktop/Laptop (1024-1535px): Ausgeblendet - zu wenig Platz für Side-Illustration */}
-      {/* Illustration wird bei diesen Viewports nicht angezeigt, um Overlap mit Content zu vermeiden */}
+      {/* Desktop (1280-1535px): Links positioniert, kleiner */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="hidden xl:block 2xl:hidden fixed left-2 top-1/2 -translate-y-1/2 pointer-events-none z-0"
+        style={{
+          width: '220px',
+          height: '220px',
+        }}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={220}
+          height={220}
+          className="w-full h-full object-contain"
+        />
+      </motion.div>
+
+      {/* Laptop (1024-1279px): Links positioniert, noch kleiner */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="hidden lg:block xl:hidden fixed left-1 top-1/2 -translate-y-1/2 pointer-events-none z-0"
+        style={{
+          width: '160px',
+          height: '160px',
+        }}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={160}
+          height={160}
+          className="w-full h-full object-contain"
+        />
+      </motion.div>
 
       {/* Tablet (768-1023px): Oben rechts */}
       <motion.div
